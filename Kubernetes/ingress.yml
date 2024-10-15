@@ -10,7 +10,12 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - testdevopsprojects.com
+    secretName: netflix-tls
   ingressClassName: nginx
   rules:
   - host: testdevopsprojects.com
